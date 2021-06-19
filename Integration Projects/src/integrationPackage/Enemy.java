@@ -28,7 +28,7 @@ public class Enemy extends Character {
 		byte[] stats = new byte[7];
 		rand.nextBytes(stats);
 		for (byte i = 0; i < 7; i++) {
-			stats[i] = (byte) ((Math.abs(stats[i]) % 9) + getLevel());
+			stats[i] = (byte) ((Math.abs(stats[i]) % 3) + getLevel());
 		}
 		return stats;
 	}

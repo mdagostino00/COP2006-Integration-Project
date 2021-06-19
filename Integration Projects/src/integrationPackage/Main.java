@@ -46,7 +46,7 @@ public class Main {
 				if (loadQuest(entityList, rand, scan) == true) {
 					System.out.println("\n\nYou Win!\n");
 					for (int i = 0; i <= 2; i++) {
-						entityList.get(i).setExp(entityList.get(i).getExp() + (1.21 * entityList.get(i).getLevel()));
+						entityList.get(i).setExp(entityList.get(i).getExp() + (3.21 * entityList.get(i).getLevel()));
 						entityList.get(i).levelUp(rand);
 					}
 					printMainMenu();
