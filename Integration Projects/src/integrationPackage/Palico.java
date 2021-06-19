@@ -7,21 +7,30 @@ package integrationPackage;
 
 import java.util.*;
 
-public class Palico {
-	private String name;
-	private String weapon;
-	private String type = "Pal";
-	private byte statPoints;
-	private byte level;
-	private double exp;
-	private byte strength;
-	private byte perception;
-	private byte endurance;
-	private byte charisma;
-	private byte intelligence;
-	private byte agility;
-	private byte luck;
-	final byte LEVEL_CAP = 127; // final sets a hard limit to the level
-								// cap, as it can't be changed at all.
+public class Palico extends Character {
+
+	public Palico(char typ, byte lvl) {
+		super(typ, lvl);
+	}
+
+	public void initializeCharStats(Scanner scan, Random rand) {
+		setRandomStats(rollRandomStats(rand));
+		setName(askCharName(scan, getType()));
+	}
+
+	public void setRandomStats(byte[] stats) {
+		for (byte i = 0; i < 7; i++) {
+			setStat(i, stats[i]);
+		}
+	}
+
+	public byte[] rollRandomStats(Random rand) {
+		byte[] stats = new byte[7];
+		rand.nextBytes(stats);
+		for (byte i = 0; i < 7; i++) {
+			stats[i] = (byte) ((Math.abs(stats[i]) % 9) + 2);
+		}
+		return stats;
+	}
 
 }
